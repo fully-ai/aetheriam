@@ -1,0 +1,26 @@
+# Binaries
+aetheriam
+*.exe
+*.out
+bin/
+dist/
+
+# Data & WAL storage
+data/
+*.db
+*.wal
+*.log
+snapshot.json
+
+# Test & coverage artifacts
+coverage.txt
+coverage.html
+*.test
+
+# Environment & IDE
+.env
+.env.local
+.vscode/
+.idea/
+*.swp
+.DS_Store

@@ -1,0 +1,24 @@
+services:
+  aetheriam:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aetheriam
+    ports:
+      - "8080:8080"
+    environment:
+      - AETHERIAM_ADDR=:8080
+      - AETHERIAM_DATA_DIR=/app/data
+      - AETHERIAM_ISSUER=http://localhost:8080
+      - AETHERIAM_SEED_DEMO=true
+    volumes:
+      - aetheriam_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/healthz"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  aetheriam_data:
